@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OnAir - Kanallar Olami</title>
+    
+    <!-- Silliq animatsiyalar uchun AOS kutubxonasi -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  
+  <body class="bg-[#0a0a0c] text-[#f3f4f6] font-sans antialiased overflow-x-hidden">
+
+    <!-- HEADER (Sizning navigatsiya tizimingiz) -->
+    <header class="py-[15px] sticky top-0 z-40 bg-[#0a0a0c]/80 backdrop-blur-md border-b border-white/5">
+      <div class="container max-w-[1450px] w-fill mx-auto flex justify-between p-[5px]">
+        <div class="flex items-center gap-[30px]">
+          <a href="../index.html">
+            <img src="../images/o.svg" alt="" />
+          </a>
+          <ul class="flex gap-[40px] max-[620px]:hidden text-sm font-medium tracking-wide text-gray-400">
+            <li><a href="./Movies.html" class="hover:text-white transition">Filmlar</a></li>
+            <li><a href="./Series.html" class="hover:text-white transition">Seriyalar</a></li>
+            <li><a href="./Channels.html" class="text-white font-semibold">Kanallar</a></li>
+            <li><a href="./Music.html" class="hover:text-white transition">Musiqa</a></li>
+          </ul>
+        </div>
+
+        <!-- drawer init and toggle -->
+        <div class="text-center hidden max-[700px]:flex items-center">
+          <button class="inline-flex items-center menu justify-center text-white bg-[#050708] box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button" data-drawer-target="drawer-example" data-drawer-show="drawer-example" aria-controls="drawer-example">
+            <img src="../images/menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="" />
+          </button>
+        </div>
+
+        <!-- Desktop Qidiruv va Profil -->
+        <div class="max-[620px]:hidden flex items-center">
+          <ul class="flex gap-[30px] div-labell items-center">
+            <li class="flex gap-[10px]">
+              <label class="div-label relative flex items-center">
+                <img src="../images/akar-icons_search.svg" alt="" class="lopa absolute left-3 w-4 h-4 opacity-50" />
+                <input id="desktop-search" placeholder="Search channel..." type="text" class="text-white bg-white/5 border border-white/10 rounded-[8px] pl-10 pr-4 py-1.5 text-sm w-60 focus:outline-none focus:border-white/30" />
+              </label>
+            </li>
+            <a href="../pages/profil.html">
+              <li class="flex gap-[10px] items-center text-sm text-gray-300 hover:text-white transition">
+                <img src="../images/carbon_user-avatar.svg" alt="" />
+                Profile
+              </li>
+            </a>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- MOBIL MENYU (DRAWER) -->
+    <div id="drawer-example" class="fixed top-0 left-0 z-50 h-screen p-4 overflow-y-auto transition-transform -translate-x-full backdrop-blur-[20px] bg-[#050708]/95 w-80 border-e border-default" tabindex="-1" aria-labelledby="drawer-label">
+      <div class="border-b border-default pb-4 mb-5 flex items-center justify-between">
+        <h5 id="drawer-label" class="inline-flex items-center text-lg font-medium text-body">
+          <img src="../images/o.svg" alt="" />
+        </h5>
+        <button type="button" data-drawer-hide="drawer-example" aria-controls="drawer-example" class="text-body bg-transparent hover:text-heading hover:bg-neutral-tertiary rounded-base w-9 h-9 flex items-center justify-center">
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/></svg>
+          <span class="sr-only">Close menu</span>
+        </button>
+      </div>
+      
+      <li class="flex gap-[10px] list-none mb-6">
+        <label class="div-label relative w-full flex items-center">
+          <img src="../images/akar-icons_search.svg" alt="" class="lopa absolute left-3" />
+          <input id="mobile-search" placeholder="Search" type="text" class="text-white bg-white/5 border border-white/10 rounded-[8px] pl-10 pr-4 py-2 w-full text-sm focus:outline-none" />
+        </label>
+      </li>
+
+      <ul class="space-y-4 text-base font-medium text-gray-300">
+        <li><a href="Movies.html" class="block hover:text-white py-1">Movies</a></li>
+        <li><a href="Series.html" class="block hover:text-white py-1">Series</a></li>
+        <li><a href="Channels.html" class="block text-white font-semibold py-1">Channels</a></li>
+        <li><a href="Music.html" class="block hover:text-white py-1">Music</a></li>
+        <li class="pt-4 border-t border-white/5">
+          <a href="profil.html" class="flex gap-[10px] text-gray-300 hover:text-white py-1">
+            <img src="../images/carbon_user-avatar.svg" alt="" /> Profile
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- KANALLAR ASOSIY SEKSIYASI -->
+    <section class="item pt-[40px] pb-[60px] bg-[url(../images/11.png)] bg-no-repeat bg-center bg-cover max-w-[100%] w-full min-h-[600px]">
+      <div class="container max-w-[1450px] w-fill mx-auto px-4">
+        
+        <!-- Sarlavha va Filterning chiroyli joylashuvi -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10" data-aos="fade-down">
+          <div>
+            <h1 class="text-2xl font-black text-white tracking-wide flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+              Jonli Telekanallar
+            </h1>
+          </div>
+          
+          <!-- Silliq janr filtri -->
+          <div id="channel-tabs" class="flex flex-wrap gap-2 text-xs font-semibold">
+            <button data-filter="all" class="tab-btn px-4 py-2 rounded-full bg-white text-black transition cursor-pointer">Barchasi</button>
+            <button data-filter="news" class="tab-btn px-4 py-2 rounded-full bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white transition cursor-pointer">Yangiliklar</button>
+            <button data-filter="sport" class="tab-btn px-4 py-2 rounded-full bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white transition cursor-pointer">Sport</button>
+            <button data-filter="movies" class="tab-btn px-4 py-2 rounded-full bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white transition cursor-pointer">Kino</button>
+          </div>
+        </div>
+
+        <!-- 1-QATOR (Siz ko'rsatgan local rasmlar va havolalar saqlab qolindi) -->
+        <div class="grid grid-cols-6 gap-[30px] mx-auto py-[15px] max-[1000px]:grid-cols-3 max-[600px]:grid-cols-2 max-[500px]:grid-cols-2">
+          
+          <div class="channel-card transition duration-300 hover:scale-105" data-genre="movies" data-name="kinopoisk 1" data-aos="fade-up" data-aos-delay="50">
+            <a href="https://www.kinopoisk.ru/film/1136137/?utm_referrer=www.google.com"><img src="./imges/Group 72.png" alt="" class="w-full" /></a>
+          </div>
+
+          <div class="channel-card transition duration-300 hover:scale-105" data-genre="movies" data-name="kinopoisk 2" data-aos="fade-up" data-aos-delay="100">
+            <a href="https://www.kinopoisk.ru/showcaptcha?cc=1&form-fb-hint=8.20&mt=B9B858893F3C3A4C98489E800DB9B2AE880E491C2863B6F0F7440552B83757CE5C0789BD8BC99AD6085A3DAEA693A2BBAA14527057F4A60E3872DB958896DC9FF73428B1702657EC9C5B37C94CF34E1B991FC76F6F810FEA0BD305F8819C712E221912D3C4CCA5207E02E65EC9FE47D6D4687C78DE75CB7ACDC6B539D7ABBA420C1E4F24FBE8201B27BA48EBFF155D65227DDB7D22940859B7DB59CC844E6422128F0AA12F38F932218934BFCDAA7EE2166C557FAFCA364254EF00D60F92F8E46F19AB32B8326171E67ACD4BE924F92021DF87A5D32CFB500E8DF924579FB64566CF698BBC470785E161F3823784F7B7&retpath=aHR0cHM6Ly93d3cua2lub3BvaXNrLnJ1L2ZpbG0vMTA2MzE5OD8%2C_97f9622c85846e14b235d0d977d24770&t=2%252F1778056403%252Fd2ceaebaf7e2ec5b56e764096d6112ba&u=8642880917643106930&s=b0dd4ae79eae422341dc44f67650a7cb"><img src="./imges/Group 72 (1).svg" alt="" class="w-full" /></a>
+          </div>
+
+          <div class="channel-card transition duration-300 hover:scale-105" data-genre="movies" data-name="kinopoisk 3" data-aos="fade-up" data-aos-delay="150">
+            <a href="https://www.kinopoisk.ru/showcaptcha?form-fb-hint=8.20&mt=5A7ABC1ADA11E45F9AF1E313D36620EC9722F8266896CBDB06977D30B4211D37B31769137FA28E2CA26B19529AAFE7F2229E8C8F2EF7B86E632CB0242565EDDB5A81668D1E0B63CFCB9ABD310399F14DD5EC8EE0DB93DA573906EEF1521EC1EF651710F8A72F49820AF450986302ED1969F1CEE3CB177D45FC47FC339BACFAB0FDD204A9A721636A55086143EDCEDC952BDC45BBDFBBC81DA7CA0835F9871ABF279C551D02CF9654BE3462C9B30008FEFF0848757A26643B6E8CA7D703940212F4CD6566E4B51A27DEA2210FAF1BC55898D856063BF878648A2A9A0EDA0270FC04D51A1C65354B6342AFDB5DB5202763&retpath=aHR0cHM6Ly93d3cua2lub3BvaXNrLnJ1L2ZpbG0vOTQyNjA0Pw%2C%2C_42621a9e5cbcca3aaebf78bd59b4c221&t=2%252F1778056435%252F00a4259af597bb66728c7b0aadbcdd38&u=8642883077206350349&s=583cd0039f1713deb197995b1f4ce8a8"><img src="./imges/Group 72 (2).svg" alt="" class="w-full" /></a>
+          </div>
+
+          <div class="channel-card transition duration-300 hover:scale-105" data-genre="sport" data-name="espn" data-aos="fade-up" data-aos-delay="200">
+            <a href="https://www.espn.com/"><img src="./imges/Group 72 (3).svg" alt="" class="w-full" /></a>
+          </div>
+
+          <div class="channel-card transition duration-300 hover:scale-105" data-genre="news" data-name="usa-87" data-aos="fade-up" data-aos-delay="250">
+            <a href="https://en.wikipedia.org/wiki/USA-87"><img src="./imges/Group 72 (4).svg" alt="" class="w-full" /></a>
+          </div>
+
+          <div class="channel-card transition duration-300 hover:scale-105" data-genre="news" data-name="tbs international" data-aos="fade-up" data-aos-delay="300">
+            <a href="https://www.international.tbs.com/"><img src="./imges/Group 72 (5).svg" alt="" class="w-full" /></a>
+          </div>
+
+        </div>
+
+        <!-- 2-QATOR (Local rasmlar saqlab qolindi) -->
+        <div class="grid grid-cols-6 gap-[30px] mx-auto py-[15px] max-[1000px]:grid-cols-3 max-[600px]:grid-cols-2 max-[500px]:grid-cols-2">
+          
+          <div class="channel-card transition duration-300 hover:scale-105" data-genre="news" data-name="flightaware" data-aos="fade-up" data-aos-delay="50">
+            <a href="https://www.flightaware.com/live/flight/FDX234"><img src="./imges/Group 72 (6).svg" alt="" class="w-full" /></a>
+          </div>
+
+          <div class="channel-card transition duration-300 hover:scale-105" data-genre="sport" data-name="peavey" data-aos="fade-up" data-aos-delay="100">
+            <a href="https://reverb.com/p/peavey-bravo-112"><img src="./imges/Group 72 (7).svg" alt="" class="w-full" /></a>
+          </div>
+
+          <div class="channel-card transition duration-300 hover:scale-105" data-genre="movies" data-name="kinopoisk 4" data-aos="fade-up" data-aos-delay="150">
+            <a href="https://www.kinopoisk.ru/film/1136137/?utm_referrer=www.google.com"><img src="./imges/Group 72.png" alt="" class="w-full" /></a>
+          </div>
+
+          <div class="channel-card transition duration-300 hover:scale-105" data-genre="news" data-name="foxnews" data-aos="fade-up" data-aos-delay="200">
+            <a href="https://www.foxnews.com/"><img src="./imges/Group 72 (8).svg" alt="" class="w-full" /></a>
+          </div>
+
+          <div class="channel-card transition duration-300 hover:scale-105" data-genre="news" data-name="tbs 2" data-aos="fade-up" data-aos-delay="250">
+            <a href="https://www.international.tbs.com/"><img src="./imges/Group 72 (5).svg" alt="" class="w-full" /></a>
+          </div>
+
+          <div class="channel-card transition duration-300 hover:scale-105" data-genre="movies" data-name="tiktok" data-aos="fade-up" data-aos-delay="300">
+            <a href="https://www.tiktok.com/@kino_lar_olami/video/7559490108081048850"><img src="./imges/Group 72 (9).svg" alt="" class="w-full" /></a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER (Sizning footeringiz - to'liq responsive dizaynda) -->
+    <footer class="bg-[#050708] py-[60px] border-t border-white/5">
+      <div class="container max-w-[1450px] w-fill mx-auto px-4">
+        <div class="grid grid-cols-4 gap-8 max-[800px]:grid-cols-2 max-[500px]:grid-cols-1">
+          
+          <div class="footerr">
+            <img src="../images/onair-logo (2).svg" alt="" class="mb-6" />
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Hot Africa, we offer original, exclusive and premium stories. Everything you want to watch, anytime, anywhere and as much.
+            </p>
+            <div class="mt-6 space-y-3">
+              <img src="../images/app.svg" alt="" />
+              <img src="../images/soc.svg" alt="" />
+            </div>
+          </div>
+          
+          <div class="footerr text-sm text-gray-400">
+            <a href="../pages/profil.html" class="flex gap-[10px] text-white font-bold mb-4 items-center">
+              <img src="../images/carbon_user-avatar.svg" alt="" /> Profile
+            </a>
+            <p class="space-y-2">
+              <span class="block hover:text-white transition cursor-pointer">Personal data</span>
+              <span class="block hover:text-white transition cursor-pointer">Choosing a Plan</span>
+              <span class="block hover:text-white transition cursor-pointer">Payment</span>
+            </p>
+          </div>
+          
+          <div class="footerr text-sm text-gray-400">
+            <h1 class="text-white font-bold mb-4">Movies</h1>
+            <p class="space-y-1.5 text-xs">
+              Lock Upp • Pavitra Rishta • Girgit • Hai Taubba Season 3 • Cartel • Crimes And Confessions • Puncch Beat Season 2 • Broken Beautiful 3
+            </p>
+          </div>
+          
+          <div class="footerr text-sm text-gray-400">
+            <h1 class="text-white font-bold mb-4">Series</h1>
+            <p class="space-y-1.5 text-xs">
+              X.X.X. Season 2 • Gandii Baat Season 5 • Gandii Baat Season 6 • Broken Beautiful 1 • Broken Beautiful 2 • Class Of 2020 • Bekaaboo 1
+            </p>
+          </div>
+
+        </div>
+        
+        <div class="border-t border-white/5 mt-12 pt-6 text-xs text-gray-500 space-y-2">
+          <p>Terms of use &nbsp; Privacy Policy &nbsp; SiteMap</p>
+          <p>Copyright © 2026 Hot Africa. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- INTERAKTIV FILTER VA QIDIRUV SKRIPTLARI -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    
+    <script>
+      // Silliq skrol animatsiyalarini yoqish
+      AOS.init({ duration: 600, once: true, offset: 30 });
+
+      // ---- DINAMIK JANR FILTRI TIZIMI ----
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const channelCards = document.querySelectorAll('.channel-card');
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Tugma stilini almashtirish
+          tabButtons.forEach(btn => btn.classList.remove('bg-white', 'text-black'));
+          tabButtons.forEach(btn => btn.classList.add('bg-white/5', 'text-gray-400'));
+          button.classList.remove('bg-white/5', 'text-gray-400');
+          button.classList.add('bg-white', 'text-black');
+
+          const filterValue = button.getAttribute('data-filter');
+
+          channelCards.forEach(card => {
+            const cardGenre = card.getAttribute('data-genre');
+            if (filterValue === 'all' || cardGenre === filterValue) {
+              card.style.display = 'block';
+              setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'scale(1)'; }, 30);
+            } else {
+              card.style.opacity = '0';
+              card.style.transform = 'scale(0.95)';
+              setTimeout(() => { card.style.display = 'none'; }, 150);
+            }
+          });
+        });
+      });
+
+      // ---- REAL-TIME QIDIRUV TIZIMI ----
+      const desktopSearch = document.getElementById('desktop-search');
+      const mobileSearch = document.getElementById('mobile-search');
+
+      function filterSearch(text) {
+        const query = text.toLowerCase().trim();
+        channelCards.forEach(card => {
+          const name = card.getAttribute('data-name').toLowerCase();
+          if (name.includes(query)) {
+            card.style.display = 'block';
+            card.style.opacity = '1';
+          } else {
+            card.style.display = 'none';
+            card.style.opacity = '0';
+          }
+        });
+      }
+
+      if(desktopSearch) desktopSearch.addEventListener('input', (e) => filterSearch(e.target.value));
+      if(mobileSearch) mobileSearch.addEventListener('input', (e) => filterSearch(e.target.value));
+    </script>
+  </body>
+</html>

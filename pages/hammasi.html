@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+      integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+      integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- From Uiverse.io by gustavofusco -->
+    <div class="loading">
+      <div class="loader">
+        <div class="box box0">
+          <div></div>
+        </div>
+        <div class="box box1">
+          <div></div>
+        </div>
+        <div class="box box2">
+          <div></div>
+        </div>
+        <div class="box box3">
+          <div></div>
+        </div>
+        <div class="box box4">
+          <div></div>
+        </div>
+        <div class="box box5">
+          <div></div>
+        </div>
+        <div class="box box6">
+          <div></div>
+        </div>
+        <div class="box box7">
+          <div></div>
+        </div>
+        <div class="ground">
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <header class="py-[15px]">
+      <div
+        class="container max-w-[1450px] w-fill mx-auto flex justify-between p-[5px]"
+      >
+        <div class="flex items-center gap-[30px]">
+          <a href="../index.html">
+            <img src="../images/o.svg" alt="" />
+          </a>
+          <ul class="flex gap-[40px] max-[620px]:hidden">
+            <a href=""> <li class="link">Movies</li> </a>
+            <a href=""> <li class="link">Series</li> </a>
+            <a href=""> <li class="link">Channels</li></a>
+            <a href=""> <li class="link">Music</li> </a>
+          </ul>
+        </div>
+
+        <!-- drawer init and toggle -->
+        <div class="text-center hidden max-[700px]:flex">
+          <button
+            class="inline-flex items-center menu justify-center text-white bg-[#050708] box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+            type="button"
+            data-drawer-target="drawer-example"
+            data-drawer-show="drawer-example"
+            aria-controls="drawer-example"
+          >
+            <img
+              src="../images/menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+              alt=""
+            />
+          </button>
+        </div>
+
+        <!-- drawer component -->
+        <div
+          id="drawer-example"
+          class="fixed top-0 menu-card left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full backdrop-blur-[20px] bg-[#1da1f2] w-96 border-e border-default"
+          tabindex="-1"
+          aria-labelledby="drawer-label"
+        >
+          <div class="border-b border-default pb-4 mb-5 flex items-center">
+            <h5
+              id="drawer-label"
+              class="inline-flex items-center text-lg font-medium text-body"
+            >
+              <svg
+                class="w-5 h-5 me-1.5"
+                aria-hidden="true"
+                xmlns="./images/o.svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <img src="../images/o.svg" alt="" />
+            </h5>
+            <button
+              type="button"
+              data-drawer-hide="drawer-example"
+              aria-controls="drawer-example"
+              class="text-body bg-transparent hover:text-heading hover:bg-neutral-tertiary rounded-base w-9 h-9 absolute top-2.5 end-2.5 flex items-center justify-center"
+            >
+              <svg
+                class="w-5 h-5"
+                aria-hidden="true"
+                xmlns="./images/o.svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18 17.94 6M18 18 6.06 6"
+                />
+              </svg>
+              <span class="sr-only">Close menu</span>
+            </button>
+          </div>
+          <div class="flex items-center gap-4"></div>
+          <!--  -->
+          <li class="flex gap-[10px]">
+            <label class="div-label">
+              <img src="../images/akar-icons_search.svg" alt="" class="lopa" />
+              <input
+                placeholder="Search"
+                type="text"
+                class="text-[#1434CB] rounded-[8px] labell"
+              />
+            </label>
+          </li>
+          <br />
+          <ul class="">
+            <a href="Movies.html"> <li class="link">Movies</li> </a>
+            <br />
+            <a href="Series.html"> <li class="link">Series</li> </a>
+            <br />
+            <a href="Channels.html"> <li class="link">Channels</li></a>
+            <br />
+            <a href="Music.html"> <li class="link">Music</li> </a>
+          </ul>
+          <br />
+          <a href=".profil.html">
+            <li class="flex gap-[10px]">
+              <img src="../images/carbon_user-avatar.svg" alt="" />
+              Profile
+            </li>
+          </a>
+          <!--  -->
+        </div>
+        <div class="max-[620px]:hidden flex items-center">
+          <ul class="flex gap-[30px] div-labell">
+            <li class="flex gap-[10px]">
+              <label class="div-label">
+                <img
+                  src="../images/akar-icons_search.svg"
+                  alt=""
+                  class="lopa"
+                />
+                <input
+                  placeholder="Search"
+                  type="text"
+                  class="text-[#1434CB] rounded-[8px] labell"
+                />
+              </label>
+            </li>
+            <a href=".profil.html">
+              <li class="flex gap-[10px]">
+                <img src="../images/carbon_user-avatar.svg" alt="" />
+                Profile
+              </li>
+            </a>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!--  -->
+    <section>
+      <div>
+        <div
+          class="item pt-[90px] pb-[90px] bg-[url(../images/kino.png)] bg-no-repeat bg-center bg-cover max-w-[100%] w-full h-[730px]"
+        >
+          <div class="container max-w-[1450px] w-fill mx-auto">
+            <h1 class="item-h1 text-[#fff]">Inception</h1>
+            <br />
+            <p class="item-p text-[#fff]">Sci-Fi Thriller 2010 | Channel 34</p>
+            <br />
+            <p class="item-p text-[#fff]">
+              Cobb steals information from his targets <br />
+              by entering their dreams. Saito offers to <br />
+              wipe clean Cobb's criminal history as <br />
+              payment for performing an inception on <br />
+              his sick competitor's son.
+            </p>
+            <br />
+            <br />
+            <button class="item-btn">Start FREE trial</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--  -->
+    <section id="images">
+      <div class="container max-w-[1450px] w-fill mx-auto">
+        <div
+          class="owl-carousel owl-theme py-[60px] imgg grid grid-cols-7 max-[1000px]:grid-cols-3 max-[400px]:grid-cols-2 gap-[20px]"
+        >
+          <div class="item">
+            <img src="../images/Rectangle 21.svg" alt="" />
+          </div>
+          <div class="item">
+            <img src="../images/Rectangle 22.svg" alt="" />
+          </div>
+          <div class="item">
+            <img src="../images/Rectangle 23.svg" alt="" />
+          </div>
+          <div class="item">
+            <img src="../images/Rectangle 166 (1).svg" alt="" />
+          </div>
+          <div class="item">
+            <img src="../images/Rectangle 167 (1).svg" alt="" />
+          </div>
+          <div class="item">
+            <img src="../images/Rectangle 166.svg" alt="" />
+          </div>
+          <div class="item">
+            <img src="../images/image 21.svg" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--  -->
+    <footer class="bg-[#050708] py-[60px]">
+      <div class="container max-w-[1450px] w-fill mx-auto">
+        <div class="grid grid-cols-4 max-[800px]:grid-cols-1">
+          <div class="footerr">
+            <img src="../images/onair-logo (2).svg" alt="" />
+            <br />
+            <br />
+            <br />
+            <p class="text-[#fff]">
+              Hot Africa, we offer original, exclusive <br />
+              and premium stories. Everything you <br />
+              want to watch, anytime, anywhere and <br />
+              as much.
+            </p>
+            <br />
+            <br />
+            <img src="../images/app.svg" alt="" />
+            <br />
+            <img src="../images/soc.svg" alt="" />
+          </div>
+          <div class="footerr">
+            <a href="../pages/profil.html">
+              <li class="flex gap-[10px] text-[#fff]">
+                <img src="../images/carbon_user-avatar.svg" alt="" />
+                Profile
+              </li>
+              <br />
+            </a>
+            <p class="text-[#fff]">
+              Personal data <br />
+              <br />
+
+              Choosing a Plan <br />
+              Payment
+            </p>
+          </div>
+          <div class="footerr">
+            <h1>Movies</h1>
+            <p class="text-[#fff]">
+              Lock Upp <br />
+              <br />
+              Pavitra Rishta <br />
+              <br />
+              Girgit <br />
+              <br />
+              Hai Taubba Season 3 <br />
+              <br />
+              Cartel <br />
+              Crimes And Confessions <br />
+              <br />
+              Puncch Beat Season 2 <br />
+              <br />
+              Broken But Beautiful Season 3
+            </p>
+          </div>
+          <div class="footerr">
+            <h1>Series</h1>
+            <p class="text-[#fff]">
+              X.X.X. Season 2 <br />
+              <br />
+              Gandii Baat Season 5 <br />
+              <br />
+              Gandii Baat Season 6 <br />
+              <br />
+              Broken But Beautiful Season 1 <br />
+              <br />
+              Broken But Beautiful Season 2 <br />
+              <br />
+              Class Of 2020 <br />
+              <br />
+              Bekaaboo Season 1 <br />
+              <br />
+              Ragini MMS Returns Season 2
+            </p>
+          </div>
+        </div>
+        <br />
+        <br />
+        <p class="text-[#fff]">Terms of use Privacy Policy SiteMap</p>
+        <br />
+        <p class="text-[#fff]">
+          Copyright © 2022 Hot Africa. All rights reserved.
+        </p>
+      </div>
+    </footer>
+    <!--  -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+      integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+      integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      $(".owl-carousel").owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        dots: false,
+
+        responsive: {
+          0: {
+            items: 1,
+          },
+          600: {
+            items: 1,
+          },
+          1000: {
+            items: 1,
+          },
+        },
+      });
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+      integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+      integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      $(".owl-carousel").owlCarousel({
+        loop: true,
+        margin: 26,
+        nav: true,
+        autoplay: true,
+        autoplayTimeout: 1000,
+        dots: false,
+
+        responsive: {
+          0: {
+            items: 3,
+          },
+          600: {
+            items: 4,
+          },
+          1000: {
+            items: 6,
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

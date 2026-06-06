@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OnAir - Premium Seriyalar</title>
+    
+    <!-- CSS Kutubxonalar (AOS Animatsiya & Flowbite) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    
+    <!-- Tailwind CSS v4 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  
+  <body class="bg-[#0a0a0c] text-[#f3f4f6] font-sans antialiased overflow-x-hidden">
+
+    <!-- HEADER (Siz taqdim etgan mukammal navigatsiya) -->
+    <header class="sticky top-0 z-40 bg-[#0a0a0c]/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+      <div class="container max-w-[1440px] mx-auto flex items-center justify-between px-6 py-4">
+        
+        <div class="flex items-center gap-12">
+          <a href="../index.html" class="transition opacity-90 hover:opacity-100">
+            <img src="../images/o.svg" alt="OnAir Logo" class="h-7" />
+          </a>
+          <nav class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide text-gray-400">
+            <a href="./Movies.html" class="hover:text-white transition duration-200">Filmlar</a>
+            <a href="./Series.html" class="text-white font-semibold">Seriyalar</a>
+            <a href="./Channels.html" class="hover:text-white transition duration-200">Kanallar</a>
+            <a href="./Music.html" class="hover:text-white transition duration-200">Musiqa</a>
+          </nav>
+        </div>
+
+        <div class="hidden md:flex items-center gap-6">
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <img src="../images/akar-icons_search.svg" alt="Search" class="w-4 h-4 opacity-50" />
+            </span>
+            <input type="text" id="desktop-search" placeholder="Kino, serial qidirish..." class="bg-white/5 border border-white/10 text-white placeholder-gray-500 text-xs rounded-full pl-10 pr-4 py-2 w-64 focus:outline-none focus:border-white/30 focus:bg-white/10 transition-all" />
+          </div>
+          <a href="./profil.html" class="flex items-center gap-2 text-sm font-medium text-gray-300 hover:text-white transition">
+            <img src="../images/carbon_user-avatar.svg" alt="Profile" class="w-6 h-6 opacity-80" />
+            <span>Profil</span>
+          </a>
+        </div>
+
+        <!-- Mobil menyu tugmasi -->
+        <div class="flex md:hidden">
+          <button class="text-white p-2 focus:outline-none" type="button" data-drawer-target="drawer-example" data-drawer-show="drawer-example" aria-controls="drawer-example">
+            <img src="../images/menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Menu" class="w-6 h-6" />
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- MOBIL MENYU (DRAWER) -->
+    <div id="drawer-example" class="fixed top-0 left-0 z-50 h-screen p-6 overflow-y-auto transition-transform -translate-x-full backdrop-blur-xl bg-[#0a0a0c]/95 w-80 border-r border-white/10" tabindex="-1">
+      <div class="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
+        <img src="../images/o.svg" alt="Logo" class="h-6" />
+        <button type="button" data-drawer-hide="drawer-example" class="text-gray-400 hover:text-white">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      
+      <div class="relative mb-6">
+        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+          <img src="../images/akar-icons_search.svg" alt="Search" class="w-4 h-4 opacity-50" />
+        </span>
+        <input type="text" id="mobile-search" placeholder="Qidirish..." class="w-full bg-white/5 border border-white/10 text-white rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none" />
+      </div>
+
+      <ul class="space-y-4 text-base font-medium text-gray-300">
+        <li><a href="./Movies.html" class="block hover:text-white py-2">Movies</a></li>
+        <li><a href="./Series.html" class="block text-white py-2 font-semibold">Series</a></li>
+        <li><a href="./Channels.html" class="block hover:text-white py-2">Channels</a></li>
+        <li><a href="./Music.html" class="block hover:text-white py-2">Music</a></li>
+        <li class="pt-4 border-t border-white/5">
+          <a href="./profil.html" class="flex items-center gap-3 hover:text-white">
+            <img src="../images/carbon_user-avatar.svg" alt="Profile" /> Profilim
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ASOSIY SERIYALAR BO'LIMI -->
+    <main class="container max-w-[1440px] mx-auto px-6 py-12">
+      
+      <!-- Sarlavha va Janr Tablari -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12" data-aos="fade-down" data-aos-duration="800">
+        <div>
+          <h1 class="text-3xl font-extrabold text-white tracking-tight">Top Seriallar</h1>
+          <p class="text-sm text-gray-400 mt-1">Dunyo tan olgan, ko'p qismli durdona asarlar to'plami</p>
+        </div>
+        
+        <!-- Tab Filterlari -->
+        <div id="genre-tabs" class="flex flex-wrap gap-2.5 text-xs font-medium">
+          <button data-filter="all" class="tab-btn px-5 py-2.5 rounded-full bg-white text-black font-semibold transition cursor-pointer">Barchasi</button>
+          <button data-filter="drama" class="tab-btn px-5 py-2.5 rounded-full bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white transition cursor-pointer">Drama</button>
+          <button data-filter="scifi" class="tab-btn px-5 py-2.5 rounded-full bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white transition cursor-pointer">Sci-Fi / Fantastika</button>
+          <button data-filter="crime" class="tab-btn px-5 py-2.5 rounded-full bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white transition cursor-pointer">Kriminal</button>
+          <button data-filter="action" class="tab-btn px-5 py-2.5 rounded-full bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white transition cursor-pointer">Action</button>
+        </div>
+      </div>
+
+      <!-- SERIYALAR GRIDI (20 TA SARA SERIAL) -->
+      <div id="series-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        
+        <!-- 1. Breaking Bad -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="crime" data-aos="fade-up" data-aos-delay="50"
+             onclick="openModal('Breaking Bad', 'https://www.youtube.com/embed/HhesaQXLuRY', '2008 - 2013', 'Kriminal / Drama', 'Kimyo o\'qituvchisi Valter Uayt o\'z oilasining kelajagini ta\'minlash uchun sobiq talabasi bilan metamfetamin ishlab chiqarish olamiga kirib boradi.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">Breaking Bad</h3><p class="text-xs text-gray-400 mt-1">5 Mavsum • Kriminal</p></div>
+        </div>
+
+        <!-- 2. Game of Thrones -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="drama" data-aos="fade-up" data-aos-delay="100"
+             onclick="openModal('Game of Thrones', 'https://www.youtube.com/embed/KPLWWIOCOOQ', '2011 - 2019', 'Drama / Fantastika', 'Vesteros qit\'asidagi to\'qqizta olijanob oila Temir taxtni qo\'lga kiritish va insoniyatga tahdid solayotgan qadimiy dushman bilan kurashish yo\'lida urush olib boradilar.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">Game of Thrones</h3><p class="text-xs text-gray-400 mt-1">8 Mavsum • Drama</p></div>
+        </div>
+
+        <!-- 3. Stranger Things -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="scifi" data-aos="fade-up" data-aos-delay="150"
+             onclick="openModal('Stranger Things', 'https://www.youtube.com/embed/b9EkMc79ZSU', '2016 - H.k.', 'Sci-Fi / Dahshat', 'Kichik shaharchada bir bolakay g\'oyib bo\'ladi. Uni qidirish jarayonida do\'stlari g\'ayritabiiy kuchlar, maxfiy laboratoriyalar va g\'alati qizaloqni uchratishadi.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">Stranger Things</h3><p class="text-xs text-gray-400 mt-1">4 Mavsum • Sci-Fi</p></div>
+        </div>
+
+        <!-- 4. Peaky Blinders -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="crime" data-aos="fade-up" data-aos-delay="200"
+             onclick="openModal('Peaky Blinders', 'https://www.youtube.com/embed/oVzVdvGIC7U', '2013 - 2022', 'Kriminal / Drama', 'Birinchi jahon urushidan keyingi Birmingemda, shafqatsiz va aqlli Tommi Shelbining boshchiligidagi Peaky Blinders jinoiy to\'dasi yuksalishi tarixi.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1447069387593-a5de0862481e?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">Peaky Blinders</h3><p class="text-xs text-gray-400 mt-1">6 Mavsum • Kriminal</p></div>
+        </div>
+
+        <!-- 5. Chernobyl -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="drama" data-aos="fade-up" data-aos-delay="250"
+             onclick="openModal('Chernobyl', 'https://www.youtube.com/embed/s9APLXM9Ei8', '2019', 'Drama / Tarixiy', '1986-yilda sodir bo\'lgan mudhish Chernobil AES fojiasi va uni bartaraf etish uchun o\'z jonini fido qilgan insonlarning haqiqiy dramasi.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">Chernobyl</h3><p class="text-xs text-gray-400 mt-1">Mini-serial • Drama</p></div>
+        </div>
+
+        <!-- 6. Dark -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="scifi" data-aos="fade-up" data-aos-delay="50"
+             onclick="openModal('Dark', 'https://www.youtube.com/embed/rrwycJ08PSA', '2017 - 2020', 'Sci-Fi / Triller', 'Germaniyadagi kichik shaharchada bolalarning sirli ravishda yo\'qolishi to\'rtta oilaning uch avlodga cho\'zilgan sirlarini ochib tashlaydi.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">Dark</h3><p class="text-xs text-gray-400 mt-1">3 Mavsum • Sci-Fi</p></div>
+        </div>
+
+        <!-- 7. Better Call Saul -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="crime" data-aos="fade-up" data-aos-delay="100"
+             onclick="openModal('Better Call Saul', 'https://www.youtube.com/embed/HN4oydykJFc', '2015 - 2022', 'Kriminal / Drama', 'Oddiy advokat Jimmi Makgill qanday qilib jinoyat olamining eng mashhur va ayyor advokati — Sol Gudmanga aylangani haqida.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1585647347483-22b66260dfff?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">Better Call Saul</h3><p class="text-xs text-gray-400 mt-1">6 Mavsum • Kriminal</p></div>
+        </div>
+
+        <!-- 8. The Boys -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="action" data-aos="fade-up" data-aos-delay="150"
+             onclick="openModal('The Boys', 'https://www.youtube.com/embed/M1bhOaLv4fM', '2019 - H.k.', 'Action / Satira', 'O\'z qudratini suiiste\'mol qilayotgan korrupsiyalashgan superqahramonlarni jazolash uchun oddiy insonlardan iborat maxfiy guruh kurash boshlaydi.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">The Boys</h3><p class="text-xs text-gray-400 mt-1">4 Mavsum • Action</p></div>
+        </div>
+
+        <!-- 9. Squid Game -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="drama" data-aos="fade-up" data-aos-delay="200"
+             onclick="openModal('Squid Game', 'https://www.youtube.com/embed/oqxAJKy0R4A', '2021 - H.k.', 'Drama / Triller', 'Qarzga botgan yuzlab insonlar ulkan pul mukofoti evaziga bolalar o\'yinida qatnashishga rozi bo\'lishadi, biroq yutqazish o\'lim bilan yakunlanadi.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">Squid Game</h3><p class="text-xs text-gray-400 mt-1">2 Mavsum • Drama</p></div>
+        </div>
+
+        <!-- 10. The Mandalorian -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="scifi" data-aos="fade-up" data-aos-delay="250"
+             onclick="openModal('The Mandalorian', 'https://www.youtube.com/embed/aOC8E8z_ifw', '2019 - H.k.', 'Sci-Fi / Sarguzasht', 'Koinotning chekka hududlarida yolg\'iz mandaloriyalik jangchi sirli jonzotni (Baby Yoda) himoya qilish uchun butun koinotga qarshi chiqadi.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">The Mandalorian</h3><p class="text-xs text-gray-400 mt-1">3 Mavsum • Sci-Fi</p></div>
+        </div>
+
+        <!-- 11. Sherlock -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="crime" data-aos="fade-up" data-aos-delay="50"
+             onclick="openModal('Sherlock', 'https://www.youtube.com/embed/xK7S9mrFWL4', '2010 - 2017', 'Kriminal / Detektiv', 'Klassik detektiv Sherlok Xolms va uning do\'sti Jon Uotson XXI asr Londonda eng chalkash va sirli jinoyatlarni fosh etishadi.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">Sherlock</h3><p class="text-xs text-gray-400 mt-1">4 Mavsum • Kriminal</p></div>
+        </div>
+
+        <!-- 12. Money Heist -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="action" data-aos="fade-up" data-aos-delay="100"
+             onclick="openModal('Money Heist', 'https://www.youtube.com/embed/_InqQJRqGW4', '2017 - 2021', 'Action / Kriminal', '\"Professor\" laqabli daho shaxs va uning guruh a\'zolari Ispaniya Qirollik zarbxonasini va milliy bankini o\'g\'irlash uchun mukammal reja tuzishadi.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1601513525393-495387ef9fa3?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">Money Heist</h3><p class="text-xs text-gray-400 mt-1">5 Mavsum • Action</p></div>
+        </div>
+
+        <!-- 13. Dark Matter -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="scifi" data-aos="fade-up" data-aos-delay="150"
+             onclick="openModal('Dark Matter', 'https://www.youtube.com/embed/jZ_Xv1O3Iug', '2024 - H.k.', 'Sci-Fi / Triller', 'Fizik olim tasodifan o\'z hayotining parallel koinotdagi muqobil versiyasiga o\'tib qoladi va o\'z oilasini qutqarish uchun multikoinot bo\'ylab sayohat qiladi.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">Dark Matter</h3><p class="text-xs text-gray-400 mt-1">1 Mavsum • Sci-Fi</p></div>
+        </div>
+
+        <!-- 14. Succession -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="drama" data-aos="fade-up" data-aos-delay="200"
+             onclick="openModal('Succession', 'https://www.youtube.com/embed/OzYxJV_asE8', '2018 - 2023', 'Drama / Media', 'Global media imperiyasiga egalik qiluvchi Roylar oilasining a\'zolari keksayib qolgan otasining o\'rnini egallash uchun o\'zaro shafqatsiz kurash olib boradirlar.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">Succession</h3><p class="text-xs text-gray-400 mt-1">4 Mavsum • Drama</p></div>
+        </div>
+
+        <!-- 15. True Detective -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="crime" data-aos="fade-up" data-aos-delay="250"
+             onclick="openModal('True Detective', 'https://www.youtube.com/embed/fVQXcaXO4fE', '2014 - H.k.', 'Kriminal / Antologiya', 'Har bir mavsumda butunlay yangi tergovchilar eng mudhish, qora va sirli rituallarga bog\'liq qotilliklarni ochishga harakat qilishadi.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1500313830540-7b6650a74fd0?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">True Detective</h3><p class="text-xs text-gray-400 mt-1">4 Mavsum • Kriminal</p></div>
+        </div>
+
+        <!-- 16. Foundation -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="scifi" data-aos="fade-up" data-aos-delay="50"
+             onclick="openModal('Foundation', 'https://www.youtube.com/embed/X4QYV5v27dU', '2021 - H.k.', 'Sci-Fi / Kosmo-Opera', 'Ayzek Azimovning romanlari asosida. Bir guruh olimlar Galaktika imperiyasi qulashini bashorat qilib, insoniyat sivilizatsiyasini asrash uchun kurashishadi.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">Foundation</h3><p class="text-xs text-gray-400 mt-1">2 Mavsum • Sci-Fi</p></div>
+        </div>
+
+        <!-- 17. The Witcher -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="action" data-aos="fade-up" data-aos-delay="100"
+             onclick="openModal('The Witcher', 'https://www.youtube.com/embed/ndl1W4ltcmg', '2019 - H.k.', 'Action / Fantastika', 'Riviyalik Geralt — maxluqlarni ovlovchi sehrgar. U taqdir hukmi bilan malika Tsilla va sehrgar Yennifer bilan bog\'liq xavfli sarguzashtlarga duch keladi.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1514539079130-25950c84af65?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">The Witcher</h3><p class="text-xs text-gray-400 mt-1">3 Mavsum • Action</p></div>
+        </div>
+
+        <!-- 18. Peacemaker -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="action" data-aos="fade-up" data-aos-delay="150"
+             onclick="openModal('Peacemaker', 'https://www.youtube.com/embed/WHXq6XnB9eI', '2022 - H.k.', 'Action / Komediya', 'Tinchlikparvar (Peacemaker) dunyoda tinchlik o\'rnatish uchun har qanday odamni (hatto bolalarni ham) o\'ldirishga tayyor bo\'lgan qahramonning sarguzashtlari.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">Peacemaker</h3><p class="text-xs text-gray-400 mt-1">1 Mavsum • Action</p></div>
+        </div>
+
+        <!-- 19. Mindhunter -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="crime" data-aos="fade-up" data-aos-delay="200"
+             onclick="openModal('Mindhunter', 'https://www.youtube.com/embed/edaQ9XwLiXc', '2017 - 2019', 'Kriminal / Psixologik', '70-yillarning oxirlarida FTBning ikki agenti jinoyat psixologiyasini o\'rganish uchun qamoqdagi eng daxshatli serial qotillar bilan suhbat o\'tkazishadi.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">Mindhunter</h3><p class="text-xs text-gray-400 mt-1">2 Mavsum • Kriminal</p></div>
+        </div>
+
+        <!-- 20. Severance -->
+        <div class="movie-card group relative cursor-pointer overflow-hidden rounded-xl bg-white/5 border border-white/5 transition duration-300 hover:scale-105 shadow-lg" 
+             data-genre="scifi" data-aos="fade-up" data-aos-delay="250"
+             onclick="openModal('Severance', 'https://www.youtube.com/embed/xKT_X7TsrLw', '2022 - H.k.', 'Sci-Fi / Detektiv', 'Lumon kompaniyasi xodimlari jarrohlik yo\'li bilan ish va shaxsiy hayot xotiralarini butunlay ajratib qo\'yishadi. Ammo bu tajriba ortida daxshatli sir yotadi.')">
+          <div class="aspect-[2/3] w-full bg-cover bg-center bg-[#1a1a24]" style="background-image: url('https://images.unsplash.com/photo-1635805737707-575885ab0820?w=500&q=80');">
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+              <div class="w-14 h-14 bg-[#1da1f2] rounded-full flex items-center justify-center shadow-xl shadow-[#1da1f2]/40 transform scale-75 group-hover:scale-100 transition duration-300">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-bold text-sm text-white truncate">Severance</h3><p class="text-xs text-gray-400 mt-1">2 Mavsum • Sci-Fi</p></div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- PREMIUM INTERAKTIV MODAL (TREYLER UCHUN) -->
+    <div id="movieModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/85 backdrop-blur-md opacity-0 transition-opacity duration-300">
+      <div class="relative w-full max-w-3xl bg-[#0f0f12] border border-white/10 rounded-2xl overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300">
+        
+        <button onclick="closeModal()" class="absolute top-4 right-4 z-10 p-2 bg-black/50 text-gray-400 hover:text-white rounded-full backdrop-blur-sm transition">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+
+        <div class="relative aspect-video w-full bg-black">
+          <iframe id="modalVideo" class="absolute inset-0 w-full h-full" src="" title="Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <div class="p-6 md:p-8">
+          <div class="flex flex-wrap items-center gap-3">
+            <h2 id="modalTitle" class="text-2xl font-black text-white tracking-tight">Serial Nomi</h2>
+            <span id="modalYear" class="bg-white/10 text-gray-300 text-xs px-2.5 py-0.5 rounded-md font-medium">Yili</span>
+            <span id="modalGenre" class="bg-[#1da1f2]/20 text-[#1da1f2] text-xs px-2.5 py-0.5 rounded-md font-medium">Janr</span>
+          </div>
+          <div class="mt-4 border-t border-white/5 pt-4">
+            <h4 class="text-xs uppercase tracking-wider text-gray-500 font-bold">Serial Haqida</h4>
+            <p id="modalDescription" class="mt-2 text-sm text-gray-300 leading-relaxed">Tavsif...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JAVASCRIPT KUTUBXONALAR VA SCRIPT MATRIXI -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    
+    <script>
+      // AOS Animatsiyalarini ishga tushirish
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 50
+      });
+
+      // ---- JONLI FILTER TAB TIZIMI ----
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const movieCards = document.querySelectorAll('.movie-card');
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          tabButtons.forEach(btn => {
+            btn.classList.remove('bg-white', 'text-black', 'font-semibold');
+            btn.classList.add('bg-white/5', 'text-gray-400');
+          });
+          button.classList.remove('bg-white/5', 'text-gray-400');
+          button.classList.add('bg-white', 'text-black', 'font-semibold');
+
+          const filterValue = button.getAttribute('data-filter');
+
+          movieCards.forEach(card => {
+            const cardGenre = card.getAttribute('data-genre');
+            
+            if (filterValue === 'all' || cardGenre === filterValue) {
+              card.style.display = 'block';
+              setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'scale(1)'; }, 50);
+            } else {
+              card.style.opacity = '0';
+              card.style.transform = 'scale(0.95)';
+              setTimeout(() => { card.style.display = 'none'; }, 200);
+            }
+          });
+        });
+      });
+
+      // ---- JONLI QIDIRUV FUNKSIYASI (DESKTOP VA MOBIL) ----
+      const desktopSearch = document.getElementById('desktop-search');
+      const mobileSearch = document.getElementById('mobile-search');
+
+      function filterMoviesBySearch(searchTerm) {
+        const value = searchTerm.toLowerCase().trim();
+        movieCards.forEach(card => {
+          const title = card.querySelector('h3').innerText.toLowerCase();
+          if (title.includes(value)) {
+            card.style.display = 'block';
+            card.style.opacity = '1';
+          } else {
+            card.style.display = 'none';
+            card.style.opacity = '0';
+          }
+        });
+      }
+
+      desktopSearch.addEventListener('input', (e) => filterMoviesBySearch(e.target.value));
+      mobileSearch.addEventListener('input', (e) => filterMoviesBySearch(e.target.value));
+
+      // ---- MODAL OYNA TIZIMI ----
+      const modal = document.getElementById('movieModal');
+      const modalContainer = modal.querySelector('.transform');
+      const modalVideo = document.getElementById('modalVideo');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalYear = document.getElementById('modalYear');
+      const modalGenre = document.getElementById('modalGenre');
+      const modalDescription = document.getElementById('modalDescription');
+
+      function openModal(title, videoUrl, year, genre, description) {
+        modalTitle.innerText = title;
+        modalYear.innerText = year;
+        modalGenre.innerText = genre;
+        modalDescription.innerText = description;
+        
+        modalVideo.src = `${videoUrl}?autoplay=1`;
+
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+          modal.classList.remove('opacity-0');
+          modalContainer.classList.remove('scale-95');
+        }, 10);
+      }
+
+      function closeModal() {
+        modal.classList.add('opacity-0');
+        modalContainer.classList.add('scale-95');
+        setTimeout(() => {
+          modal.classList.add('hidden');
+          modalVideo.src = ''; 
+        }, 300);
+      }
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    </script>
+  </body>
+</html>

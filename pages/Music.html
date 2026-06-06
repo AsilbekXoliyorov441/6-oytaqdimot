@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OnAir - Premium Musiqa</title>
+    
+    <!-- Zamonaviy ikonlar va Silliq animatsiyalar -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../css/style.css" />
+    
+    <style>
+      /* Musiqiy ekvalayzer animatsiyasi */
+      .playing-bar {
+        animation: bounce 0.8s ease infinite alternate;
+      }
+      @keyframes bounce {
+        100% { transform: scaleY(0.3); }
+      }
+    </style>
+  </head>
+  
+  <body class="bg-[#070709] text-[#f3f4f6] font-sans antialiased overflow-x-hidden">
+
+    <!-- HEADER (Sizning navigatsiya tizimingiz) -->
+    <header class="py-[15px] sticky top-0 z-40 bg-[#070709]/80 backdrop-blur-xl border-b border-white/5">
+      <div class="container max-w-[1450px] w-fill mx-auto flex justify-between p-[5px]">
+        <div class="flex items-center gap-[30px]">
+          <a href="../index.html">
+            <img src="../images/o.svg" alt="Logo" />
+          </a>
+          <ul class="flex gap-[40px] max-[620px]:hidden text-sm font-medium tracking-wide text-gray-400">
+            <li><a href="./Movies.html" class="hover:text-white transition">Filmlar</a></li>
+            <li><a href="./Series.html" class="hover:text-white transition">Seriyalar</a></li>
+            <li><a href="./Channels.html" class="hover:text-white transition">Kanallar</a></li>
+            <li><a href="./Music.html" class="text-[#00f2fe] font-semibold drop-shadow-[0_0_10px_rgba(0,242,254,0.5)]">Musiqa</a></li>
+          </ul>
+        </div>
+
+        <!-- Mobil menyu uchun tugma -->
+        <div class="text-center hidden max-[700px]:flex items-center">
+          <button class="inline-flex items-center menu justify-center text-white bg-[#050708] border border-transparent hover:bg-brand-strong rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button" data-drawer-target="drawer-example" data-drawer-show="drawer-example" aria-controls="drawer-example">
+            <img src="../images/menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="" />
+          </button>
+        </div>
+
+        <!-- Desktop Qidiruv va Profil -->
+        <div class="max-[620px]:hidden flex items-center">
+          <ul class="flex gap-[30px] div-labell items-center">
+            <li class="flex gap-[10px]">
+              <label class="div-label relative flex items-center">
+                <img src="../images/akar-icons_search.svg" alt="" class="lopa absolute left-3 w-4 h-4 opacity-50" />
+                <input id="music-search" placeholder="Qo'shiq yoki ijrochi..." type="text" class="text-white bg-white/5 border border-white/10 rounded-[8px] pl-10 pr-4 py-1.5 text-sm w-60 focus:outline-none focus:border-[#00f2fe]/50" />
+              </label>
+            </li>
+            <a href="../pages/profil.html">
+              <li class="flex gap-[10px] items-center text-sm text-gray-300 hover:text-white transition">
+                <img src="../images/carbon_user-avatar.svg" alt="" />
+                Profile
+              </li>
+            </a>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- MOBIL MENYU (DRAWER) -->
+    <div id="drawer-example" class="fixed top-0 left-0 z-50 h-screen p-4 overflow-y-auto transition-transform -translate-x-full backdrop-blur-xl bg-[#050708]/95 w-80 border-e border-white/10" tabindex="-1">
+      <div class="border-b border-white/10 pb-4 mb-5 flex items-center justify-between">
+        <img src="../images/o.svg" alt="" />
+        <button type="button" data-drawer-hide="drawer-example" class="text-gray-400 hover:text-white">
+          <i class="bi bi-x-lg text-xl"></i>
+        </button>
+      </div>
+      <ul class="space-y-4 text-base font-medium text-gray-300">
+        <li><a href="Movies.html" class="block hover:text-white py-1">Movies</a></li>
+        <li><a href="Series.html" class="block hover:text-white py-1">Series</a></li>
+        <li><a href="Channels.html" class="block hover:text-white py-1">Channels</a></li>
+        <li><a href="Music.html" class="block text-[#00f2fe] py-1">Music</a></li>
+        <li class="pt-4 border-t border-white/5">
+          <a href="profil.html" class="flex gap-[10px] text-gray-300 hover:text-white py-1">
+            <img src="../images/carbon_user-avatar.svg" alt="" /> Profile
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ASOSIY MUSIQA SOUNDSCAPE SEKSIYASI -->
+    <main class="container max-w-[1450px] mx-auto px-4 py-8 pb-32">
+      
+      <!-- 1. HERO BANNER: KATTA REKLAMA YOKI PREMYERA (AWESOME DESIGN) -->
+      <section class="relative rounded-3xl overflow-hidden mb-12 p-8 md:p-12 bg-gradient-to-r from-[#4f46e5] to-[#06b6d4] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6" data-aos="zoom-in">
+        <div class="absolute inset-0 bg-[url(../images/11.png)] opacity-10 bg-cover bg-center mix-blend-overlay"></div>
+        <div class="relative z-10 max-w-xl">
+          <span class="bg-white/20 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Yangi Premyera</span>
+          <h2 class="text-3xl md:text-5xl font-black text-white mt-4 tracking-tight leading-none">Hot Africa - Sound of the Summer</h2>
+          <p class="text-white/80 text-sm mt-3 leading-relaxed">Eng yorqin, ekzotik va ommabop musiqiy to'plamlar, eksklyuziv treklarni faqat bizning platformada birinchilardan bo'lib tinglang.</p>
+          <button onclick="playTrack('Afro Summer Vibes', 'Various Artists', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=150')" class="mt-6 bg-white text-black font-bold text-sm px-6 py-3 rounded-full shadow-lg hover:scale-105 transition flex items-center gap-2 cursor-pointer">
+            <i class="bi bi-play-fill text-lg"></i> Hozir Tinglash
+          </button>
+        </div>
+        <div class="relative w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group hidden sm:block">
+          <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400" alt="Cover" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+        </div>
+      </section>
+
+      <!-- 2. IKKI USTUNLI TUZILMA: TRENDDAGILAR VA TOP CHART -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- CHAP USTUN: TAVSIYA ETILADIGAN ALBOM / PLEYSISTLAR (Grid 2/3) -->
+        <div class="lg:col-span-2 space-y-8">
+          <div>
+            <h3 class="text-xl font-black text-white tracking-wide mb-6 flex items-center gap-2">
+              <i class="bi bi-grid-1x2-fill text-[#00f2fe]"></i> Mashhur Pleylistlar
+            </h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+              
+              <!-- Pleylist 1 -->
+              <div class="bg-white/5 border border-white/5 p-4 rounded-2xl cursor-pointer hover:bg-white/10 transition group" onclick="playTrack('Chill Mix', 'Lofi Lounge', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=150')">
+                <div class="relative aspect-square rounded-xl overflow-hidden mb-3">
+                  <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300" class="w-full h-full object-cover group-hover:scale-105 transition" alt="" />
+                  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                    <i class="bi bi-play-circle-fill text-4xl text-[#00f2fe]"></i>
+                  </div>
+                </div>
+                <h4 class="font-bold text-sm text-white truncate">Chill Out Mix</h4>
+                <p class="text-xs text-gray-500 truncate mt-0.5">Dam olish va konsentratsiya</p>
+              </div>
+
+              <!-- Pleylist 2 -->
+              <div class="bg-white/5 border border-white/5 p-4 rounded-2xl cursor-pointer hover:bg-white/10 transition group" onclick="playTrack('Top Hits 2026', 'Chart Global', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', 'https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=150')">
+                <div class="relative aspect-square rounded-xl overflow-hidden mb-3">
+                  <img src="https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=300" class="w-full h-full object-cover group-hover:scale-105 transition" alt="" />
+                  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                    <i class="bi bi-play-circle-fill text-4xl text-[#00f2fe]"></i>
+                  </div>
+                </div>
+                <h4 class="font-bold text-sm text-white truncate">Global Top Hits</h4>
+                <p class="text-xs text-gray-500 truncate mt-0.5">Dunyo reytingi peshqadamlari</p>
+              </div>
+
+              <!-- Pleylist 3 -->
+              <div class="bg-white/5 border border-white/5 p-4 rounded-2xl cursor-pointer hover:bg-white/10 transition group" onclick="playTrack('Retro Dance', 'Disco Club', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3', 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=150')">
+                <div class="relative aspect-square rounded-xl overflow-hidden mb-3">
+                  <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=300" class="w-full h-full object-cover group-hover:scale-105 transition" alt="" />
+                  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                    <i class="bi bi-play-circle-fill text-4xl text-[#00f2fe]"></i>
+                  </div>
+                </div>
+                <h4 class="font-bold text-sm text-white truncate">Retro Gold</h4>
+                <p class="text-xs text-gray-500 truncate mt-0.5">80-90 yillar xitlari</p>
+              </div>
+
+              <!-- Pleylist 4 -->
+              <div class="bg-white/5 border border-white/5 p-4 rounded-2xl cursor-pointer hover:bg-white/10 transition group" onclick="playTrack('Afro Beats', 'Lagos Grooves', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3', 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=150')">
+                <div class="relative aspect-square rounded-xl overflow-hidden mb-3">
+                  <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=300" class="w-full h-full object-cover group-hover:scale-105 transition" alt="" />
+                  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                    <i class="bi bi-play-circle-fill text-4xl text-[#00f2fe]"></i>
+                  </div>
+                </div>
+                <h4 class="font-bold text-sm text-white truncate">Afro Beats</h4>
+                <p class="text-xs text-gray-500 truncate mt-0.5">Afrika ritmlari to'plami</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- YANADA KO'PROQ TAVSIYA ETILADIGAN TREKLAR LISTI -->
+          <div>
+            <h3 class="text-xl font-black text-white tracking-wide mb-4">Siz uchun maxsus</h3>
+            <div class="space-y-2">
+              
+              <!-- Trek 1 -->
+              <div class="track-row flex items-center justify-between p-3 bg-white/5 border border-white/5 rounded-xl hover:bg-white/10 transition group cursor-pointer" onclick="playTrack('Midnight City', 'M83 Synth', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3', 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=150')">
+                <div class="flex items-center gap-4">
+                  <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=100" class="w-12 h-12 rounded-lg object-cover" alt="" />
+                  <div>
+                    <h5 class="font-bold text-sm text-white group-hover:text-[#00f2fe] transition">Midnight City</h5>
+                    <p class="text-xs text-gray-400">M83 Synth</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 text-xs text-gray-500">
+                  <span class="hidden sm:inline">Electro Wave</span>
+                  <span>3:45</span>
+                  <button class="text-gray-400 hover:text-white"><i class="bi bi-heart"></i></button>
+                </div>
+              </div>
+
+              <!-- Trek 2 -->
+              <div class="track-row flex items-center justify-between p-3 bg-white/5 border border-white/5 rounded-xl hover:bg-white/10 transition group cursor-pointer" onclick="playTrack('Blinding Lights', 'The Weeknd (Cover)', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3', 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=150')">
+                <div class="flex items-center gap-4">
+                  <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=100" class="w-12 h-12 rounded-lg object-cover" alt="" />
+                  <div>
+                    <h5 class="font-bold text-sm text-white group-hover:text-[#00f2fe] transition">Blinding Lights</h5>
+                    <p class="text-xs text-gray-400">The Weeknd (Cover)</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 text-xs text-gray-500">
+                  <span class="hidden sm:inline">Synthwave</span>
+                  <span>4:12</span>
+                  <button class="text-gray-400 hover:text-white"><i class="bi bi-heart"></i></button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- O'NG USTUN: TOP TRACKS - CHART TIZIMI (Grid 1/3) -->
+        <div class="bg-white/5 border border-white/5 rounded-2xl p-6 h-fit">
+          <h3 class="text-lg font-black text-white mb-6 flex items-center justify-between">
+            <span>OnAir Top Chart</span>
+            <span class="text-xs text-[#00f2fe] font-medium uppercase tracking-wider">Haftalik</span>
+          </h3>
+          <div class="space-y-4">
+            
+            <!-- Chart #1 -->
+            <div class="flex items-center justify-between p-2 rounded-xl hover:bg-white/5 transition cursor-pointer" onclick="playTrack('Starboy Rhythm', 'Daft & Abel', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3', 'https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=150')">
+              <div class="flex items-center gap-4">
+                <span class="text-xl font-black text-gray-600 w-6 text-center group-hover:text-white">01</span>
+                <img src="https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=80" class="w-10 h-10 rounded-md object-cover" alt="" />
+                <div>
+                  <h5 class="font-bold text-xs text-white truncate max-w-[130px]">Starboy Rhythm</h5>
+                  <p class="text-[10px] text-gray-400 truncate max-w-[130px]">Daft & Abel</p>
+                </div>
+              </div>
+              <i class="bi bi-play-fill text-gray-400 hover:text-white"></i>
+            </div>
+
+            <!-- Chart #2 -->
+            <div class="flex items-center justify-between p-2 rounded-xl hover:bg-white/5 transition cursor-pointer" onclick="playTrack('Desert Rose 2026', 'Sting Remix', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3', 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=150')">
+              <div class="flex items-center gap-4">
+                <span class="text-xl font-black text-gray-600 w-6 text-center">02</span>
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=80" class="w-10 h-10 rounded-md object-cover" alt="" />
+                <div>
+                  <h5 class="font-bold text-xs text-white truncate max-w-[130px]">Desert Rose 2026</h5>
+                  <p class="text-[10px] text-gray-400 truncate max-w-[130px]">Sting Remix</p>
+                </div>
+              </div>
+              <i class="bi bi-play-fill text-gray-400 hover:text-white"></i>
+            </div>
+
+            <!-- Chart #3 -->
+            <div class="flex items-center justify-between p-2 rounded-xl hover:bg-white/5 transition cursor-pointer" onclick="playTrack('Lost in Africa', 'Kalahari Club', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3', 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=150')">
+              <div class="flex items-center gap-4">
+                <span class="text-xl font-black text-gray-600 w-6 text-center">03</span>
+                <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=80" class="w-10 h-10 rounded-md object-cover" alt="" />
+                <div>
+                  <h5 class="font-bold text-xs text-white truncate max-w-[130px]">Lost in Africa</h5>
+                  <p class="text-[10px] text-gray-400 truncate max-w-[130px]">Kalahari Club</p>
+                </div>
+              </div>
+              <i class="bi bi-play-fill text-gray-400 hover:text-white"></i>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- PREMIUM INTERAKTIV AUDIO PLAYER (SAHIFANING ENG TAGIDA YOPISHIB TURADI) -->
+    <div id="global-player" class="fixed bottom-0 left-0 right-0 z-50 transform translate-y-full transition-transform duration-300 bg-[#0f0f14]/90 backdrop-blur-2xl border-t border-white/10 px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      
+      <!-- Hozir ijro etilayotgan trek info -->
+      <div class="flex items-center gap-4 w-full md:w-1/4">
+        <img id="player-cover" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=150" class="w-12 h-12 rounded-lg object-cover shadow-md" alt="" />
+        <div class="truncate">
+          <h4 id="player-title" class="font-bold text-sm text-white truncate">Hech narsa tanlanmadi</h4>
+          <p id="player-artist" class="text-xs text-gray-400 truncate">Ijrochi nomi</p>
+        </div>
+        <!-- Kichik ekvalayzer -->
+        <div id="equalizer" class="hidden items-end gap-0.5 h-4">
+          <span class="playing-bar w-0.5 h-full bg-[#00f2fe] inline-block rounded-full"></span>
+          <span class="playing-bar w-0.5 h-3 bg-[#00f2fe] inline-block rounded-full" style="animation-delay: 0.2s"></span>
+          <span class="playing-bar w-0.5 h-4 bg-[#00f2fe] inline-block rounded-full" style="animation-delay: 0.4s"></span>
+        </div>
+      </div>
+
+      <!-- Boshqaruv tugmalari pleyer markazi -->
+      <div class="flex flex-col items-center gap-1.5 w-full md:w-2/4">
+        <div class="flex items-center gap-6">
+          <button class="text-gray-400 hover:text-white transition text-lg"><i class="bi bi-shuffle"></i></button>
+          <button class="text-gray-400 hover:text-white transition text-xl"><i class="bi bi-skip-start-fill"></i></button>
+          <button id="play-btn" onclick="togglePlay()" class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center text-xl hover:scale-105 transition shadow-lg cursor-pointer">
+            <i class="bi bi-play-fill"></i>
+          </button>
+          <button class="text-gray-400 hover:text-white transition text-xl"><i class="bi bi-skip-end-fill"></i></button>
+          <button class="text-gray-400 hover:text-white transition text-lg"><i class="bi bi-repeat"></i></button>
+        </div>
+        
+        <!-- Slayder (Progres bar) -->
+        <div class="w-full flex items-center gap-3 text-[10px] text-gray-400">
+          <span id="current-time">0:00</span>
+          <input type="range" id="progress-bar" value="0" class="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#00f2fe]" />
+          <span id="total-time">0:00</span>
+        </div>
+      </div>
+
+      <!-- Ovoz sozlamasi o'ng tomonda -->
+      <div class="hidden md:flex items-center justify-end gap-3 w-1/4">
+        <i class="bi bi-volume-up text-gray-400"></i>
+        <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="0.8" class="w-24 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-white" />
+      </div>
+
+      <!-- Yashirin Audio Element -->
+      <audio id="main-audio" src=""></audio>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#050708] py-[40px] border-t border-white/5">
+      <div class="container max-w-[1450px] mx-auto px-4 text-center sm:text-left">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+          <p>Terms of use &nbsp; Privacy Policy &nbsp; SiteMap</p>
+          <p>Copyright © 2026 Hot Africa. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- SKRIPTLAR -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    
+    <script>
+      AOS.init({ duration: 700, once: true });
+
+      // AUDIO PLAYER LOGIKASI
+      const audio = document.getElementById('main-audio');
+      const player = document.getElementById('global-player');
+      const playBtn = document.getElementById('play-btn');
+      const pTitle = document.getElementById('player-title');
+      const pArtist = document.getElementById('player-artist');
+      const pCover = document.getElementById('player-cover');
+      const eq = document.getElementById('equalizer');
+      const progressBar = document.getElementById('progress-bar');
+      const volumeBar = document.getElementById('volume-bar');
+      const currentTimeText = document.getElementById('current-time');
+      const totalTimeText = document.getElementById('total-time');
+
+      function playTrack(title, artist, streamUrl, coverUrl) {
+        // Ma'lumotlarni o'zgartirish
+        pTitle.innerText = title;
+        pArtist.innerText = artist;
+        pCover.src = coverUrl;
+        audio.src = streamUrl;
+
+        // Player panelini ko'rsatish
+        player.classList.remove('translate-y-full');
+
+        // Musiqani boshlash
+        audio.play();
+        playBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
+        eq.classList.remove('hidden');
+        eq.classList.add('flex');
+      }
+
+      function togglePlay() {
+        if (audio.paused) {
+          audio.play();
+          playBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
+          eq.classList.add('flex');
+        } else {
+          audio.pause();
+          playBtn.innerHTML = '<i class="bi bi-play-fill"></i>';
+          eq.classList.remove('flex');
+          eq.classList.add('hidden');
+        }
+      }
+
+      // Progres yangilanishi
+      audio.addEventListener('timeupdate', () => {
+        if(audio.duration) {
+          const progress = (audio.currentTime / audio.duration) * 100;
+          progressBar.value = progress;
+          
+          // Vaqt hisobi
+          let curMins = Math.floor(audio.currentTime / 60);
+          let curSecs = Math.floor(audio.currentTime - curMins * 60);
+          let durMins = Math.floor(audio.duration / 60);
+          let durSecs = Math.floor(audio.duration - durMins * 60);
+
+          if(curSecs < 10) curSecs = '0' + curSecs;
+          if(durSecs < 10) durSecs = '0' + durSecs;
+
+          currentTimeText.innerText = curMins + ':' + curSecs;
+          totalTimeText.innerText = durMins + ':' + durSecs;
+        }
+      });
+
+      // Slayder orqali musiqani o'tkazish
+      progressBar.addEventListener('input', () => {
+        const time = (progressBar.value * audio.duration) / 100;
+        audio.currentTime = time;
+      });
+
+      // Ovoz balandligi
+      volumeBar.addEventListener('input', () => {
+        audio.volume = volumeBar.value;
+      });
+
+      // REAL-TIME SEARCH (QIDIRUV)
+      const musicSearch = document.getElementById('music-search');
+      musicSearch.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        const rows = document.querySelectorAll('.track-row');
+        
+        rows.forEach(row => {
+          const text = row.innerText.toLowerCase();
+          if(text.includes(query)) {
+            row.style.display = 'flex';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
